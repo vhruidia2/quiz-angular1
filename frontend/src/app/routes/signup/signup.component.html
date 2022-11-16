@@ -1,0 +1,130 @@
+<!-- usuarios -->
+<div
+  class="container-fluid px-5  style="
+  style="background-color: rgb(9, 9, 9)"
+  id="usersForm"
+>
+  <table class="table">
+    <thead>
+      <tr style="color: white">
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+        <th>Contraseña</th>
+        <th>Es Administrador?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let users of this.userService.users.data"
+        style="color: white"
+      >
+        <td>{{ users.firtsName }}</td>
+        <td>{{ users.lastName }}</td>
+        <td>{{ users.email }}</td>
+        <td>{{ users.password }}</td>
+        <td>
+          {{ users.isAdmin }}
+        </td>
+        <td>
+          <div class="d-flex justify-content-evenly">
+            <i
+              class="material-icons"
+              style="cursor: pointer"
+              (click)="this.delUser(users._id)"
+              >delete_forever</i
+            >
+            <i
+              class="material-icons text-success"
+              style="cursor: pointer"
+              (click)="this.fillForm(users)"
+              >edit
+            </i>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Administrado de productos -->
+  <div
+    class="d-flex justify-content-center ms-4 mt-4"
+    style="
+      background-color: white;
+      box-shadow: 5px 5px 15px 5px black;
+    "
+  >
+    <div class="" style="width: 25rem">
+      <h3 class="text-center pb-3">Administrador de Usuarios</h3>
+
+      <form #usersForm="ngForm" class=" black">
+        <input
+          type="hidden"
+          id="_id"
+          name="_id"
+          [ngModel]="this.userService.currentUser._id"
+        />
+        <div class="mb-1">
+          <label for="name" class="form-label">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firtsName"
+            placeholder="Nombre"
+            name="firtsName"
+            [ngModel]="this.userService.currentUser.firtsName"
+          />
+          <div class="mb-1">
+            <label for="description" class="form-label">Apellido</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastName"
+              placeholder="Apellido"
+              name="lastName"
+              [ngModel]="this.userService.currentUser.lastName"
+            />
+          </div>
+        </div>
+        <div class="mb-1">
+          <label for="description" class="form-label">Email</label>
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            placeholder="email"
+            name="email"
+            [ngModel]="this.userService.currentUser.email"
+          />
+        </div>
+        <div class="mb-1">
+          <label for="stock" class="form-label">Contraseña</label>
+          <input
+            type="string"
+            class="form-control"
+            id="password"
+            placeholder="Productos disponibles"
+            name="password"
+            [ngModel]="this.userService.currentUser.password"
+          />
+        </div>
+        <div class="mb-1">
+          <label for="image" class="form-label"
+            >Es administrador? (false o true)</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="isAdmin"
+            placeholder="false o true"
+            name="isAdmin"
+            [ngModel]="this.userService.currentUser.isAdmin"
+          />
+        </div>
+      </form>
+      <button class="btn btn-success" (click)="this.createUsers(usersForm)">
+        Guardar
+      </button>
+    </div>
+  </div>
+</div>

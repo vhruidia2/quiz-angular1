@@ -1,0 +1,53 @@
+/* app/styles.css */
+
+* {
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    background: #000203;
+  }
+  h1 {
+    margin: 0;
+    padding: 0;
+  }
+  .custom-form {
+    min-width: 10%;
+    max-width: 25%;
+    margin: 0px auto;
+    background: rgba(10, 10, 10, 0.15);
+    padding: 2rem 3rem;
+    margin: auto;
+    border-radius: 2.5rem;
+    background-color: #090909;
+    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
+    color: rgb(247, 244, 244);
+    margin-top: 10rem;
+  }
+  .custom-form input {
+    display: block;
+    margin: 2rem 0;
+    width: 100%;
+    border-radius: 0.3rem;
+    padding: 1rem;
+    border: none;
+    box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.8), inset 5px 5px 10px
+        rgba(250, 4, 4, 0.1);
+    border: 0 none;
+    background: #feffff;
+  }
+  .custom-form button {
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border: none;
+    font-size: 0.8rem;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #0bf636;
+    width: 100%;
+    
+    padding: 0.875rem 1rem;
+    border-radius: 1.5rem;
+    box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
+    cursor: pointer;
+  }

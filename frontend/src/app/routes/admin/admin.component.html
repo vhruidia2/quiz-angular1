@@ -1,0 +1,121 @@
+<!-- Productos -->
+<div class="container-fluid px-5 d-flex">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Descripcion</th>
+        <th>Palabras clave</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of this.productService.products.data">
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.stock }}</td>
+        <td>{{ product.description }}</td>
+        <td>
+          <span *ngFor="let keyword of product.keyWords">{{
+            "#" + keyword + " "
+          }}</span>
+        </td>
+        <td>
+          <div class="d-flex justify-content-evenly">
+            <i
+              class="material-icons"
+              (click)="this.deleteProduct(product._id)"
+              style="cursor: pointer"
+              >delete_forever</i
+            >
+            <i
+              class="material-icons text-success"
+              (click)="this.fillForm(product)"
+              style="cursor: pointer"
+              >edit
+            </i>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- Administrado de productos -->
+  <div class="d-flex justify-content-center ms-4">
+    <div class="border p-3 rounded" style="width: 25rem">
+      <h3 class="text-center pb-3">Administrador de productos</h3>
+
+      <form #productForm="ngForm">
+        <input
+          type="hidden"
+          id="_id"
+          name="_id"
+          [ngModel]="this.productService.currentProduct._id"
+        />
+        <div class="mb-3">
+          <label for="name" class="form-label">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Nombre de producto"
+            name="name"
+            [ngModel]="this.productService.currentProduct.name"
+          />
+          <div class="mb-3">
+            <label for="description" class="form-label"
+              >Precio del producto</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="price"
+              placeholder="Precio del producto"
+              name="price"
+              [ngModel]="this.productService.currentProduct.price"
+            />
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Descripcion</label>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            placeholder="Descripcion del producto"
+            name="description"
+            [ngModel]="this.productService.currentProduct.description"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="stock" class="form-label">Stock</label>
+          <input
+            type="number"
+            class="form-control"
+            id="stock"
+            placeholder="Productos disponibles"
+            name="stock"
+            [ngModel]="this.productService.currentProduct.stock"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="image" class="form-label">Imagen del Producto</label>
+          <input
+            type="text"
+            class="form-control"
+            id="image"
+            placeholder="Imagen del producto"
+            name="image"
+            [ngModel]="this.productService.currentProduct.image"
+          />
+        </div>
+      </form>
+
+      <button class="btn btn-dark" (click)="this.createProduct(productForm)">
+        <i class="material-icons pe-4">save</i>
+        Guardar
+      </button>
+    </div>
+  </div>
+</div>
